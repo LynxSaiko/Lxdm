@@ -1,0 +1,75 @@
+# ==============================================================================
+# GTKRC CONFIGURATION UNTUK LXDM GREETER DARK MODE
+# File ini mengatur warna dasar, teks, dan tombol.
+# ==============================================================================
+
+# Definisikan palet warna dark
+style "dark_palette"
+{
+    # Latar belakang utama (digunakan oleh banyak widget)
+    bg[NORMAL]        = "#212121"  # Hitam gelap
+    bg[PRELIGHT]      = "#3a3a3a"  # Abu-abu gelap (hover/saat disentuh)
+    bg[SELECTED]      = "#4a4a4a"  # Abu-abu medium untuk item terpilih
+    
+    # Warna foreground (teks)
+    fg[NORMAL]        = "#ffffff"  # Putih
+    fg[PRELIGHT]      = "#ffffff"
+    fg[SELECTED]      = "#ffffff"
+    fg[INSENSITIVE]   = "#666666"  # Teks non-aktif
+
+    # Warna dasar area input (Entry fields)
+    base[NORMAL]      = "#1c1c1c"  # Lebih gelap dari latar belakang utama
+    text[NORMAL]      = "#ffffff"  # Teks input putih
+
+    # Warna lain
+    mid               = "#303030"
+    light             = "#444444"
+    dark              = "#1a1a1a"
+    
+    font_name = "Sans 10" 
+}
+
+# Terapkan gaya dasar ke semua widget
+class "GtkWidget" style "dark_palette"
+
+# ==============================================================================
+# Penyesuaian spesifik widget
+# ==============================================================================
+
+# GtkWindow (Jendela utama LXDM)
+style "lxdm_window" = "dark_palette"
+{
+    bg[NORMAL] = "#212121"
+}
+widget_class "GtkWindow" style "lxdm_window"
+
+# GtkEntry (Input Username dan Password)
+style "entry_style" = "dark_palette"
+{
+    bg[NORMAL] = "#1c1c1c"
+    fg[NORMAL] = "#ffffff"
+    base[NORMAL] = "#1c1c1c"
+    # Border pada input field
+    xthickness = 3
+    ythickness = 3
+}
+widget_class "*GtkEntry*" style "entry_style"
+
+# GtkButton (Tombol Keluar)
+style "button_style" = "dark_palette"
+{
+    bg[NORMAL] = "#3a3a3a"
+    bg[PRELIGHT] = "#505050"
+    fg[NORMAL] = "#ffffff"
+    # Border
+    xthickness = 2
+    ythickness = 2
+}
+widget_class "*GtkButton*" style "button_style"
+
+# GtkLabel (Prompt, Waktu, Desktop:, Language:, dll.)
+style "label_style" = "dark_palette"
+{
+    fg[NORMAL] = "#eeeeee"
+}
+widget_class "*GtkLabel*" style "label_style"
